@@ -1,6 +1,10 @@
 {-# LANGUAGE OverloadedStrings #-}
 module Main where
 
+import System.Environment (lookupEnv)
+
+import Text.Read (readMaybe)
+
 import Web.Spock
 import Web.Spock.Config
 
@@ -15,7 +19,10 @@ main :: IO ()
 main =
     do ref <- newIORef 0
        spockCfg <- defaultSpockCfg EmptySession PCNoDatabase (DummyAppState ref)
-       runSpock 8080 (spock spockCfg app)
+       port <- lookupEnv "PORT"
+       runSpock (case (port >>= readMaybe) :: Maybe Int of
+            Just portNum -> portNum
+            Nothing -> 8080) (spock spockCfg app)
 
 app :: SpockM () MySession MyAppState ()
 app =
