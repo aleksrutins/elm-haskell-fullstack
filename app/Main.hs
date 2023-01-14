@@ -1,5 +1,5 @@
 {-# LANGUAGE OverloadedStrings #-}
-module Main where
+module Main (main) where
 
 import System.Environment (lookupEnv)
 
@@ -28,7 +28,7 @@ app :: SpockM () MySession MyAppState ()
 app =
     do get root $
            text "Hello World!"
-       get ("hello" <//> var) $ \name ->
+       get ("api/hello" <//> var) $ \name ->
            do (DummyAppState ref) <- getState
               visitorNumber <- liftIO $ atomicModifyIORef' ref $ \i -> (i+1, i+1)
               text ("Hello " <> name <> ", you are visitor number " <> T.pack (show visitorNumber))

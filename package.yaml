@@ -24,6 +24,7 @@ dependencies:
 - Spock >= 0.14
 - mtl
 - text
+- blaze-html >= 0.9
 
 ghc-options:
 - -Wall
