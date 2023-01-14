@@ -61,3 +61,5 @@ tests:
     - -with-rtsopts=-N
     dependencies:
     - elm-haskell-fullstack
+
+build-type: Custom
