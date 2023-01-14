@@ -19,6 +19,6 @@ elmPage initTitle componentName =
         body $ do
             H.div ! A.id "main" 
                   $ ""
-            script ! src (H.textValue $ "/scripts/" <> componentName <> ".js")
+            script ! src (H.textValue $ "/scripts/" <> componentName <> ".min.js")
                    $ ""
             script $ H.text $ "var app = Elm." <> componentName <> ".init({ node: document.querySelector('#main') })"

@@ -19,5 +19,15 @@ buildElm :: [String]
                 -> Distribution.Types.LocalBuildInfo.LocalBuildInfo
                 -> IO ()
 buildElm modules args buildFlags pkgDescription localBuildInfo =
-    for_ modules $ \mod -> do
-        callCommand $ "elm make frontend/" <> mod <> ".elm --optimize --output=static/scripts/" <> mod <> ".js"
+    for_ modules $ \mod -> 
+        let moduleSourceFile = 
+              let repl '.' = '/'
+                  repl x   = x
+              in "frontend/" <> (map repl mod) <> ".elm"
+            moduleOutFile = 
+              "static/scripts/" <> mod <> ".js"
+            moduleOutFileMin =
+              "static/scripts/" <> mod <> ".min.js"
+        in do
+            callCommand $ "elm make " <> moduleSourceFile <> " --optimize --output=" <> moduleOutFile
+            callCommand $ "esbuild --minify " <> moduleOutFile <> " > " <> moduleOutFileMin
