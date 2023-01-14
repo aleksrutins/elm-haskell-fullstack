@@ -6,12 +6,12 @@ cabal-version: 1.12
 
 name:           elm-haskell-fullstack
 version:        0.1.0.0
-description:    Please see the README on GitHub at <https://github.com/githubuser/elm-haskell-fullstack#readme>
+description:    Please see the README on GitHub at <https://github.com/aleksrutins/elm-haskell-fullstack#readme>
 homepage:       https://github.com/aleksrutins/elm-haskell-fullstack#readme
 bug-reports:    https://github.com/aleksrutins/elm-haskell-fullstack/issues
-author:         Author name here
-maintainer:     example@example.com
-copyright:      2023 Author name here
+author:         Aleks Rutins
+maintainer:     aleks@rutins.com
+copyright:      2023 Aleks Rutins
 license:        BSD3
 license-file:   LICENSE
 build-type:     Custom
