@@ -3,9 +3,11 @@ body {
     --pink-500: hsl(270, 60%, 52%);
 }
 
-html, body, div#main {
+html, body {
     width: 100vw;
     height: 100vh;
+    margin: 0;
+    padding: 0;
 }
 
 body {
