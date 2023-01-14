@@ -22,8 +22,10 @@ description:         Please see the README on GitHub at <https://github.com/gith
 dependencies:
 - base >= 4.7 && < 5
 - Spock >= 0.14
+- wai-middleware-static >= 0.9
 - mtl
 - text
+- blaze-markup >= 0.8
 - blaze-html >= 0.9
 
 ghc-options:

@@ -20,4 +20,4 @@ buildElm :: [String]
                 -> IO ()
 buildElm modules args buildFlags pkgDescription localBuildInfo =
     for_ modules $ \mod -> do
-        callCommand $ "elm make frontend/" <> mod <> ".elm --optimize --output=frontend-dist/" <> mod <> ".js"
+        callCommand $ "elm make frontend/" <> mod <> ".elm --optimize --output=static/scripts/" <> mod <> ".js"
