@@ -15,6 +15,7 @@ import Html exposing (h1)
 import Html exposing (a)
 import Html.Attributes exposing (href)
 import Html exposing (p)
+import Html exposing (h2)
 
 
 
@@ -29,31 +30,23 @@ main =
 -- MODEL
 
 
-type alias Model = Int
+type alias Model = ()
 
 
 init : Model
 init =
-  0
+  ()
 
 
 
 -- UPDATE
 
 
-type Msg
-  = Increment
-  | Decrement
-
+type alias Msg = ()
 
 update : Msg -> Model -> Model
-update msg model =
-  case msg of
-    Increment ->
-      model + 1
-
-    Decrement ->
-      model - 1
+update _ model =
+  model
 
 
 
@@ -61,13 +54,15 @@ update msg model =
 
 
 view : Model -> Html Msg
-view model =
+view _ =
   div [class "container"]
     [ h1 [class "heading"] [text "About"]
     , p [] [ text "This is an example app using "
            , a [href "https://spock.li"] [text "Spock"]
            , text " and "
            , a [href "https://elm-lang.org"] [text "Elm"]
+           , text ". Learn more on "
+           , a [href "https://github.com/aleksrutins/elm-haskell-fullstack"] [text "GitHub"]
            , text "."]
     , a [href "/"] [text "Back to Home"]
      ]
