@@ -4,6 +4,16 @@
 
 This is a basic full-stack app example using Haskell, [Spock](https://spock.li), and [Elm](https://elm-lang.org).
 
+## Developing
+You will need:
+- [Haskell Stack](https://docs.haskellstack.org/en/stable/)
+- [Elm](https://elm-lang.org)
+- [esbuild](https://esbuild.github.io/) (in your PATH)
+
+To run, just use `stack run`.
+
+Elm files are compiled and minified as part of the Haskell build process (see `Setup.hs`); right now, however, they are not tracked for changes, so if you changed an Elm file without changing a Haskell file, you will need to delete `.stack-work` before rebuilding in order to make sure that the Elm is actually rebuilt.
+
 ## Adding a Page
 To add a page, first create an Elm module, e.g.:
 
