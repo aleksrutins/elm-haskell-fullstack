@@ -34,6 +34,7 @@ app =
     do middleware (staticPolicy (addBase "static"))
        get root $ renderElm "Home" "Main"
        get "about" $ renderElm "About" "About"
+       get "subdir/test-page" $ renderElm "Test Page" "Pages.TestPage"
        get ("api/hello" <//> var) $ \name ->
            do (DummyAppState ref) <- getState
               visitorNumber <- liftIO $ atomicModifyIORef' ref $ \i -> (i+1, i+1)

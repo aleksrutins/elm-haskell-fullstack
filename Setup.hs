@@ -9,7 +9,7 @@ import Data.List
 import Data.Foldable
 
 main = defaultMainWithHooks $ simpleUserHooks {
-    postBuild = buildElm ["Main", "About"]
+    postBuild = buildElm ["Main", "About", "Pages.TestPage"]
 }
 
 buildElm :: [String]
