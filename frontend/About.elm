@@ -10,6 +10,11 @@ module About exposing (..)
 import Browser
 import Html exposing (Html, button, div, text)
 import Html.Events exposing (onClick)
+import Html.Attributes exposing (class)
+import Html exposing (h1)
+import Html exposing (a)
+import Html.Attributes exposing (href)
+import Html exposing (p)
 
 
 
@@ -57,5 +62,12 @@ update msg model =
 
 view : Model -> Html Msg
 view model =
-  div []
-    [ text "About" ]
+  div [class "container"]
+    [ h1 [class "heading"] [text "About"]
+    , p [] [ text "This is an example app using "
+           , a [href "https://spock.li"] [text "Spock"]
+           , text " and "
+           , a [href "https://elm-lang.org"] [text "Elm"]
+           , text "."]
+    , a [href "/"] [text "Back to Home"]
+     ]

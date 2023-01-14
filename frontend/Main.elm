@@ -10,6 +10,13 @@ module Main exposing (..)
 import Browser
 import Html exposing (Html, button, div, text)
 import Html.Events exposing (onClick)
+import Html exposing (span)
+import Html exposing (h1)
+import Html.Attributes exposing (class)
+import Html exposing (p)
+import Html.Attributes exposing (style)
+import Html.Attributes exposing (href)
+import Html exposing (a)
 
 
 
@@ -57,8 +64,12 @@ update msg model =
 
 view : Model -> Html Msg
 view model =
-  div []
-    [ button [ onClick Decrement ] [ text "-" ]
-    , div [] [ text (String.fromInt model) ]
-    , button [ onClick Increment ] [ text "+" ]
+  div [class "container"]
+    [ h1 [class "heading"] [text "Spock + Elm Full-Stack"]
+    , a [style "display" "block", style "align-self" "center", style "margin-bottom" "10px", href "/about"] [text "Another Page"]
+    , div [class "counter-container"] [
+        button [ onClick Increment ] [ text "Increment" ]
+      , p [style "font-family" "monospace"] [ text (String.fromInt model) ]
+      , button [ onClick Decrement ] [ text "Decrement" ]
+      ]
     ]
