@@ -27,7 +27,7 @@ data Handler = Handler {path :: [T.Text], script :: T.Text}
 renderElm title component = renderHtml $ elmPage title component
 
 handlerForModule :: T.Text -> Handler
-handlerForModule moduleName = Handler { script = moduleName, path = T.split (=='.') moduleName }
+handlerForModule moduleName = Handler { script = moduleName, path = T.split (=='.') (T.toLower moduleName) }
 
 respondHandler :: [T.Text] -> [Handler] -> Handler
 respondHandler path handlers = respondHandlerInternal path handlers $ Handler {path = [], script = "Main"}
@@ -52,8 +52,9 @@ main =
        let portNum = fromMaybe 8080 (port >>= readMaybe)
        pageScripts <- getDirectoryContents "static/scripts"
        putStrLn $ "Listening on " <> show portNum
-       run portNum $ gzip def {gzipFiles = GzipPreCompressed GzipCompress} $ staticPolicy (addBase "static") $ app (map T.pack pageScripts)
+       run portNum $ gzip def {gzipFiles = GzipPreCompressed GzipCompress} $ staticPolicy (addBase "static") $ app (map ((\scriptName -> fromMaybe scriptName (T.stripSuffix ".min.js" scriptName)) . T.pack) pageScripts)
 
+app :: [T.Text] -> Request -> (Response -> b) -> b
 app scripts req respond = respond $
     let handlers = map handlerForModule scripts
         handler = respondHandler (pathInfo req) handlers
