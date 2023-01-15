@@ -12,7 +12,7 @@ import Control.Monad.Trans
 import Data.IORef
 import Data.List as L (isPrefixOf)
 import qualified Data.Text as T
-import Data.Maybe (fromMaybe)
+import Data.Maybe (fromMaybe, mapMaybe)
 import Text.Blaze.Html.Renderer.Utf8 (renderHtml)
 import Network.Wai.Middleware.Static (staticPolicy, addBase)
 import Network.Wai.Middleware.Gzip (gzip, def, GzipFiles (GzipPreCompressed, GzipCompress), gzipFiles)
@@ -52,7 +52,7 @@ main =
        let portNum = fromMaybe 8080 (port >>= readMaybe)
        pageScripts <- getDirectoryContents "static/scripts"
        putStrLn $ "Listening on " <> show portNum
-       run portNum $ gzip def {gzipFiles = GzipPreCompressed GzipCompress} $ staticPolicy (addBase "static") $ app (map ((\scriptName -> fromMaybe scriptName (T.stripSuffix ".min.js" scriptName)) . T.pack) pageScripts)
+       run portNum $ gzip def {gzipFiles = GzipPreCompressed GzipCompress} $ staticPolicy (addBase "static") $ app (mapMaybe (T.stripSuffix ".min.js" . T.pack) pageScripts)
 
 app :: [T.Text] -> Request -> (Response -> b) -> b
 app scripts req respond = respond $
