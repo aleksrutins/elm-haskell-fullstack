@@ -1,4 +1,3 @@
-{-# LANGUAGE BangPatterns #-}
 {-# LANGUAGE Strict #-}
 import Distribution.Simple
 import Distribution.Simple.Setup
@@ -31,3 +30,4 @@ buildElm modules args buildFlags pkgDescription localBuildInfo =
         in do
             callCommand $ "elm make " <> moduleSourceFile <> " --optimize --output=" <> moduleOutFile
             callCommand $ "esbuild --minify " <> moduleOutFile <> " > " <> moduleOutFileMin
+            callCommand $ "gzip -kf " <> moduleOutFileMin
