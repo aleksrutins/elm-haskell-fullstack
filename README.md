@@ -1,8 +1,8 @@
-# Spock & Elm Full-Stack
+# Warp & Elm Full-Stack
 
 [![Deploy on Railway](https://railway.app/button.svg)](https://railway.app/new/template/NSeGz_?referralCode=Y68pBw)
 
-This is a basic full-stack app example using Haskell, [Spock](https://spock.li), and [Elm](https://elm-lang.org).
+This is a basic full-stack app example using Haskell, [Warp](https://hackage.haskell.org/package/warp), and [Elm](https://elm-lang.org).
 
 ## Developing
 You will need:
@@ -56,12 +56,4 @@ postBuild = buildElm ["Main", "About", "MyPage"]
 ...
 ```
 
-And finally, add a route in `app/Main.hs`, in the `app` function:
-
-```haskell
-app =
-    do middleware (staticPolicy (addBase "static"))
-       ...
-       get "my-page" $ renderElm "My Page" "MyPage"
-       ...
-```
+And you're done!
