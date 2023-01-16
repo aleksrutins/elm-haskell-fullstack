@@ -65,7 +65,7 @@ update msg model =
 view : Model -> Html Msg
 view model =
   div [class "container"]
-    [ h1 [class "heading"] [text "Spock + Elm Full-Stack"]
+    [ h1 [class "heading"] [text "Warp + Elm Full-Stack"]
     , a [style "display" "block", style "align-self" "center", style "margin-bottom" "10px", href "/about"] [text "Another Page"]
     , div [class "counter-container"] [
         button [ onClick Increment ] [ text "Increment" ]

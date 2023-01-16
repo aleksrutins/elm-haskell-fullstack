@@ -58,8 +58,10 @@ view _ =
   div [class "container"]
     [ h1 [class "heading"] [text "About"]
     , p [] [ text "This is an example app using "
-           , a [href "https://spock.li"] [text "Spock"]
-           , text " and "
+           , a [href "https://hackage.haskell.org/package/warp"] [text "Warp"]
+           , text " (the server library behind "
+           , a [href "https://yesodweb.com"] [text "Yesod"]
+           , text ") and "
            , a [href "https://elm-lang.org"] [text "Elm"]
            , text ". Learn more on "
            , a [href "https://github.com/aleksrutins/elm-haskell-fullstack"] [text "GitHub"]
